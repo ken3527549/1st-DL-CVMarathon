@@ -1,6 +1,11 @@
 import cv2
-img_gray = cv2.imread('E:\cygwin\home\Ken-Destop\python\marathon\len_full.jpg', cv2.IMREAD_GRAYSCALE)
-img_bgr = cv2.imread('E:\cygwin\home\Ken-Destop\python\marathon\len_full.jpg')
+import os
+path = os.path.dirname(os.path.abspath(__file__))
+gray_img = cv2.imread(path + '/len_full.jpg',cv2.IMREAD_GRAYSCALE)
+rgb_img =  cv2.imread(path + '/len_full.jpg')
+
+img_gray = cv2.imread(path + '/len_full.jpg', cv2.IMREAD_GRAYSCALE)
+img_bgr = cv2.imread(path + '/len_full.jpg')
 img_hsv = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HSV)
 img_hsl = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HLS)
 img_lab = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2LAB)
