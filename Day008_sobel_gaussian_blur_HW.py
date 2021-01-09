@@ -27,3 +27,22 @@ while True:
     if k == 27:
         cv2.destroyAllWindows()
         break
+
+img_grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# 求一次導數取得邊緣檢測結果
+img_sobel_x = cv2.Sobel(img_grey, cv2.CV_16S, dx=1, dy=0, ksize=3)
+img_sobel_x = cv2.convertScaleAbs(img_sobel_x)
+
+# 求二次導數取得邊緣檢測結果
+img_sobel_xx = cv2.Sobel(img_grey, cv2.CV_16S, dx=2, dy=0, ksize=3)
+img_sobel_xx = cv2.convertScaleAbs(img_sobel_xx)
+
+#　組合 + 顯示圖片
+img_show = np.hstack((img_grey, img_sobel_x, img_sobel_xx))
+while True:
+    cv2.imshow('Edge Detection', img_show)
+    k = cv2.waitKey(0)
+    if k == 27:
+        cv2.destroyAllWindows()
+        break
